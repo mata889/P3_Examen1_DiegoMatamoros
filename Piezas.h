@@ -4,23 +4,20 @@
 class Piezas{
 private:
 
-	char figura;
-	int x;
-	int y;
+	char color;
+	char tipo;
 
 public:
 
-	Piezas(char, int, int);
+	Piezas(char,char);
 	Piezas();
 
-	char getFigura();
-	int getX();
-	int getY();
+	char getColor();
+	char getTipo();
 
-	void setFigura(char);
-	void getX(int);
-	void getY(int);
-
+	void setColor(char);
+	void setTipo(char);
+	
 	~Piezas();
 
 };

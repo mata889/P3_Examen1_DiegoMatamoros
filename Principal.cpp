@@ -2,6 +2,8 @@
 #include <string>
 #include "Piezas.h"
 
+Piezas*** crearTablero();
+void eliminarTablero(Piezas***);
 
 using namespace std;
 
@@ -9,6 +11,7 @@ int main(){
 	string jugador1;
 	string jugador2;
 	char j1[100],j2[100];
+
 
 	cout<<"Introduzca su nombre Jugador 1:"<<endl;
 	cin>>j1;
@@ -20,9 +23,12 @@ int main(){
 
 	cout<<jugador1<<" "<<"VS"<<" "<<jugador2<<endl;
 
-	
+	Piezas*** tablero=crearTablero();
+	cout<<"se ha creado el tablero"<<endl;
 
+	eliminarTablero(tablero);
 	return 0;
+
 }
 
 Piezas*** crearTablero(){
@@ -43,4 +49,8 @@ void eliminarTablero(Piezas*** tablero){
 		delete[] tablero[i];
 	}
 	delete[] tablero;
+}
+
+Piezas*** llenarTablero(Piezas***tabla){
+	
 }
