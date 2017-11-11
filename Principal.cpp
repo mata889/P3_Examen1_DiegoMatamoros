@@ -7,6 +7,7 @@ void eliminarTablero(Piezas***);
 Piezas*** llenarTablero(Piezas***);
 void imprimirTablero(Piezas*** );
 int letra(char );
+Piezas*** movimiento(Piezas*** ,int,int, int ,int ,char);
 
 using namespace std;
 
@@ -36,7 +37,7 @@ int main(){
 	while (win==true) {
 		if (cantidad%2==0) {
 
-			cout<<"ES SU TURNO NEGRO: "<<jugador1<<endl;
+			cout<<"ES SU TURNO blanco: "<<jugador1<<endl;
 			string inicial,fin;
 			char x,y,xx,yy;
 			int x1,y1,xx1,yy1;
@@ -60,12 +61,17 @@ int main(){
 				yy=inicial.at(1);
 				yy1=yy-48;
 				cantidad++;
+				tablero=movimiento(tablero,x1,y1,xx1,yy1,'B');
+
 			} while((x1<0 || x1>8 )||(xx1<0 || xx1>8) || (y1<0||  y1>8 )||( yy1<0 ||yy1>8));
 			//cout<<"INTRODUJO MAL UN NUMERO,perdio su turno"<<endl;
 
 
 		}else if(cantidad%2!=0){
-			cout<<"ES SU TURNO BLANCO: "<<jugador2<<endl;
+			if (cantidad==15) {
+				win==false;
+			}
+			cout<<"ES SU TURNO negro: "<<jugador2<<endl;
 			string inicial,fin;
 			char x,y,xx,yy;
 			int x1,y1,xx1,yy1;
@@ -89,12 +95,13 @@ int main(){
 				yy=inicial.at(1);
 				yy1=yy-48;
 				cantidad++;
+				tablero=movimiento(tablero,x1,y1,xx1,yy1,'N');
 			} while((x1<0 ||  x1>8 )|| (xx1<0 ||  xx1>8) ||  (y1<0 ||  y1>8 )|| ( yy1<0 ||  yy1>8));
 		}
 	}
 
 
-
+	//finalizar jueguito
 	eliminarTablero(tablero);
 	return 0;
 
@@ -180,4 +187,16 @@ int letra(char x){
 		numero=7;
 	}
 	return  numero;
+}
+
+Piezas*** movimiento(Piezas*** tabla,int x,int y, int x1,int y1,char z){
+
+
+				tabla[x][y]=tabla[x1][y1];
+				tabla[x][y]=new Piezas(' ',' ');
+
+
+
+;
+	return tabla;
 }
